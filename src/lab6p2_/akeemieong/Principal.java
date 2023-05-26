@@ -805,8 +805,6 @@ public class Principal extends javax.swing.JFrame {
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Peronal");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Gerente");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Personal General");
-        treeNode1.add(treeNode2);
         perso.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane1.setViewportView(perso);
 
@@ -849,10 +847,12 @@ public class Principal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        obje.pack();
         obje.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        add.pack();
         
         add.setVisible(true);
         
@@ -888,15 +888,7 @@ public class Principal extends javax.swing.JFrame {
             usuario=addusuario.getText();
             contra=addcontra.getText();
             cargo=(String)addcargo.getSelectedItem();
-            
-        }else{
-            ocupacion=addoccupacion.getText();
-            horario=addhorario.getText();
-            tiempo=Integer.parseInt(addtiempo.getText());
-            sueldo=Integer.parseInt(addsueldo.getText());
-            
-        }
-        DefaultTreeModel modeloARBOL= (DefaultTreeModel) perso.getModel();
+            DefaultTreeModel modeloARBOL= (DefaultTreeModel) perso.getModel();
         DefaultMutableTreeNode raiz= (DefaultMutableTreeNode) modeloARBOL.getRoot();
         for (int i = 0; i < raiz.getChildCount(); i++) {
                 if (raiz.getChildAt(i).toString().equals(nombre)) {
@@ -904,6 +896,21 @@ public class Principal extends javax.swing.JFrame {
                     ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
                 } 
             }
+        }else{
+            ocupacion=addoccupacion.getText();
+            horario=addhorario.getText();
+            tiempo=Integer.parseInt(addtiempo.getText());
+            sueldo=Integer.parseInt(addsueldo.getText());
+            DefaultTreeModel modeloARBOL= (DefaultTreeModel) perso.getModel();
+        DefaultMutableTreeNode raiz= (DefaultMutableTreeNode) modeloARBOL.getRoot();
+        for (int i = 0; i < raiz.getChildCount(); i++) {
+                if (raiz.getChildAt(i).toString().equals(nombre)) {
+                    DefaultMutableTreeNode p= new DefaultMutableTreeNode(new PersonalGeneral(ocupacion, horario, tiempo, sueldo, identi, nombre, sexo, estado, altura, peso));
+                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                } 
+            }
+        }
+        
     }//GEN-LAST:event_agregarActionPerformed
 
     private void addsueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addsueldoActionPerformed
