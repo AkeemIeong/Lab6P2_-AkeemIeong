@@ -4,6 +4,9 @@
  */
 package lab6p2_.akeemieong;
 
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+
 /**
  *
  * @author SURFACEB2I7
@@ -48,7 +51,6 @@ public class Principal extends javax.swing.JFrame {
         addcargo = new javax.swing.JComboBox<>();
         addcontra = new javax.swing.JTextField();
         addusuario = new javax.swing.JTextField();
-        addoccupacion = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         addhorario = new javax.swing.JTextField();
@@ -61,6 +63,7 @@ public class Principal extends javax.swing.JFrame {
         jRadioButton2 = new javax.swing.JRadioButton();
         jRadioButton3 = new javax.swing.JRadioButton();
         jRadioButton6 = new javax.swing.JRadioButton();
+        addoccupacion = new javax.swing.JTextField();
         per = new javax.swing.ButtonGroup();
         sex = new javax.swing.ButtonGroup();
         estadocivil = new javax.swing.ButtonGroup();
@@ -128,6 +131,7 @@ public class Principal extends javax.swing.JFrame {
 
         per.add(jRadioButton4);
         jRadioButton4.setForeground(new java.awt.Color(0, 0, 0));
+        jRadioButton4.setSelected(true);
         jRadioButton4.setText("Gerente");
         jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -153,8 +157,13 @@ public class Principal extends javax.swing.JFrame {
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Cargo");
 
-        addcargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        addcargo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gerente de planta", "Gerente de Surcursal" }));
         addcargo.setEnabled(false);
+        addcargo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addcargoActionPerformed(evt);
+            }
+        });
 
         addcontra.setEnabled(false);
         addcontra.addActionListener(new java.awt.event.ActionListener() {
@@ -169,9 +178,6 @@ public class Principal extends javax.swing.JFrame {
                 addusuarioActionPerformed(evt);
             }
         });
-
-        addoccupacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        addoccupacion.setEnabled(false);
 
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Occupacion");
@@ -243,6 +249,13 @@ public class Principal extends javax.swing.JFrame {
         jRadioButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jRadioButton6ActionPerformed(evt);
+            }
+        });
+
+        addoccupacion.setEnabled(false);
+        addoccupacion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addoccupacionActionPerformed(evt);
             }
         });
 
@@ -325,8 +338,8 @@ public class Principal extends javax.swing.JFrame {
                                 .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(addoccupacion, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(addhorario, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(addhorario, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(addoccupacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGap(12, 12, 12))
         );
         jPanel3Layout.setVerticalGroup(
@@ -341,14 +354,13 @@ public class Principal extends javax.swing.JFrame {
                             .addComponent(jRadioButton4)
                             .addComponent(jRadioButton5))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(addusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(addoccupacion, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(id, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addusuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(addoccupacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -420,16 +432,10 @@ public class Principal extends javax.swing.JFrame {
         jButton4.setText("eliminacion");
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 142, 56));
 
-        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("root");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Peronal");
-        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Gerente");
-        javax.swing.tree.DefaultMutableTreeNode treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Gerente de planta");
-        treeNode3.add(treeNode4);
-        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Gerente de Surcursal");
-        treeNode3.add(treeNode4);
-        treeNode2.add(treeNode3);
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Peronal");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Gerente");
         treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Personal");
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Personal General");
         treeNode1.add(treeNode2);
         perso.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane1.setViewportView(perso);
@@ -511,8 +517,23 @@ public class Principal extends javax.swing.JFrame {
         if(jRadioButton4.isSelected()){
             usuario=addusuario.getText();
             contra=addcontra.getText();
+            cargo=(String)addcargo.getSelectedItem();
+            
+        }else{
+            ocupacion=addoccupacion.getText();
+            horario=addhorario.getText();
+            tiempo=Integer.parseInt(addtiempo.getText());
+            sueldo=Integer.parseInt(addsueldo.getText());
             
         }
+        DefaultTreeModel modeloARBOL= (DefaultTreeModel) perso.getModel();
+        DefaultMutableTreeNode raiz= (DefaultMutableTreeNode) modeloARBOL.getRoot();
+        for (int i = 0; i < raiz.getChildCount(); i++) {
+                if (raiz.getChildAt(i).toString().equals(nombre)) {
+                    DefaultMutableTreeNode p= new DefaultMutableTreeNode(new Gerenete(usuario, contra, cargo, identi, nombre, sexo, estado, altura, peso));
+                    ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                } 
+            }
     }//GEN-LAST:event_agregarActionPerformed
 
     private void addsueldoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addsueldoActionPerformed
@@ -583,6 +604,14 @@ public class Principal extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
+    private void addcargoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addcargoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addcargoActionPerformed
+
+    private void addoccupacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addoccupacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addoccupacionActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -623,7 +652,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> addcargo;
     private javax.swing.JTextField addcontra;
     private javax.swing.JTextField addhorario;
-    private javax.swing.JComboBox<String> addoccupacion;
+    private javax.swing.JTextField addoccupacion;
     private javax.swing.JTextField addsueldo;
     private javax.swing.JTextField addtiempo;
     private javax.swing.JTextField addusuario;
