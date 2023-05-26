@@ -5,6 +5,8 @@
 package lab6p2_.akeemieong;
 
 import java.awt.Color;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JColorChooser;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
@@ -78,7 +80,7 @@ public class Principal extends javax.swing.JFrame {
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        combop = new javax.swing.JComboBox<>();
         jRadioButton7 = new javax.swing.JRadioButton();
         jRadioButton8 = new javax.swing.JRadioButton();
         jRadioButton9 = new javax.swing.JRadioButton();
@@ -647,7 +649,7 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(combop, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(22, 22, 22))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -767,7 +769,7 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(combop, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(46, 46, 46))
@@ -804,6 +806,8 @@ public class Principal extends javax.swing.JFrame {
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Peronal");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Gerente");
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Personal General");
         treeNode1.add(treeNode2);
         perso.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         jScrollPane1.setViewportView(perso);
@@ -889,26 +893,44 @@ public class Principal extends javax.swing.JFrame {
             contra=addcontra.getText();
             cargo=(String)addcargo.getSelectedItem();
             DefaultTreeModel modeloARBOL= (DefaultTreeModel) perso.getModel();
-        DefaultMutableTreeNode raiz= (DefaultMutableTreeNode) modeloARBOL.getRoot();
-        for (int i = 0; i < raiz.getChildCount(); i++) {
+            DefaultMutableTreeNode raiz= (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            DefaultMutableTreeNode nodo_persona;
+            nodo_persona= new DefaultMutableTreeNode(new Gerenete(usuario, contra, cargo, identi, nombre, sexo, estado, altura, peso));
+            raiz.add(nodo_persona);
+            modeloARBOL.reload();
+
+        /**for (int i = 0; i < raiz.getChildCount(); i++) {
                 if (raiz.getChildAt(i).toString().equals(nombre)) {
                     DefaultMutableTreeNode p= new DefaultMutableTreeNode(new Gerenete(usuario, contra, cargo, identi, nombre, sexo, estado, altura, peso));
                     ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
                 } 
-            }
+            }*/
         }else{
             ocupacion=addoccupacion.getText();
             horario=addhorario.getText();
             tiempo=Integer.parseInt(addtiempo.getText());
             sueldo=Integer.parseInt(addsueldo.getText());
-            DefaultTreeModel modeloARBOL= (DefaultTreeModel) perso.getModel();
-        DefaultMutableTreeNode raiz= (DefaultMutableTreeNode) modeloARBOL.getRoot();
-        for (int i = 0; i < raiz.getChildCount(); i++) {
+            
+        
+        DefaultTreeModel modeloARBOL= (DefaultTreeModel) perso.getModel();
+            DefaultMutableTreeNode raiz= (DefaultMutableTreeNode) modeloARBOL.getRoot();
+            DefaultMutableTreeNode nodo_persona;
+            nodo_persona= new DefaultMutableTreeNode(new PersonalGeneral(ocupacion, horario, tiempo, sueldo, identi, nombre, sexo, estado, altura, peso));
+            raiz.add(nodo_persona);
+            modeloARBOL.reload();
+        
+        
+        
+        
+        
+        
+       /** for (int i = 0; i < raiz.getChildCount(); i++) {
                 if (raiz.getChildAt(i).toString().equals(nombre)) {
                     DefaultMutableTreeNode p= new DefaultMutableTreeNode(new PersonalGeneral(ocupacion, horario, tiempo, sueldo, identi, nombre, sexo, estado, altura, peso));
                     ((DefaultMutableTreeNode) raiz.getChildAt(i)).add(p);
+                   
                 } 
-            }
+            }*/
         }
         
     }//GEN-LAST:event_agregarActionPerformed
@@ -1107,6 +1129,7 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JTextField addusuario;
     private javax.swing.JButton agregar;
     private javax.swing.JTextField altura;
+    private javax.swing.JComboBox<String> combop;
     private javax.swing.JTextField edad;
     private javax.swing.ButtonGroup estadocivil;
     private javax.swing.JTextField id;
@@ -1115,7 +1138,6 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
