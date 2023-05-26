@@ -506,7 +506,11 @@ public class Principal extends javax.swing.JFrame {
             estado="Soltero";
         }else
             estado="Casado";
+        altura=Integer.parseInt(this.altura.getText());
+        peso=Integer.parseInt(this.peso.getText());
         if(jRadioButton4.isSelected()){
+            usuario=addusuario.getText();
+            contra=addcontra.getText();
             
         }
     }//GEN-LAST:event_agregarActionPerformed
